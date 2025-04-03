@@ -78,4 +78,54 @@ Ejercicios prácticos:
    2. Crear una clase Estudiante que herede de Persona y tenga una propiedad adicional llamada
    carrera. Agregar un método para mostrar la información del estudiante.
    3. Crear una clase CuentaBancaria con métodos depositar(), retirar() y consultarSaldo().
+
+
 */
+class Libro{
+    constructor(titulo, autor, publicacion){
+        this.titulo = titulo;
+        this.autor = autor;
+        this.publicacion = publicacion;
+    }
+    
+    mostrarInfo(){
+        console.log(`Título: ${this.titulo}, Autor: ${this.autor}, Año: ${this.publicacion}`);
+    }
+}
+
+
+class Estudiante extends Persona{
+    constructor(nombre, edad, carrera){
+        super(nombre, edad); // Llama al constructor de la clase padre
+        this.carrera = carrera;
+    }
+    
+    estudiar(){
+        console.log(`${this.nombre} está estudiando ${this.carrera}.`);
+    }
+}
+
+class CuentaBancaria{
+    constructor(titular, saldo = 0){
+        this.titular = titular;
+        this.saldo = saldo;
+    }
+    
+    depositar(monto){
+        this.saldo += monto;
+        console.log(`Se han depositado $${monto}. Nuevo saldo: $${this.saldo}`);
+    }
+    
+    retirar(monto){
+        if(monto > this.saldo){
+            console.log("Fondos insuficientes.");
+        } else {
+            this.saldo -= monto;
+            console.log(`Se han retirado $${monto}. Nuevo saldo: $${this.saldo}`);
+        }
+    }
+    
+    consultarSaldo(){
+        console.log(`Saldo actual: $${this.saldo}`);
+    }
+}
